@@ -1,0 +1,4 @@
+calendar:
+  url: https://calendar.sample.url
+  user: sampoke_username
+  pass: sample_password
