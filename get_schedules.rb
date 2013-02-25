@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require './caldav.rb'
+require File.expand_path(File.dirname(__FILE__) + '/caldav.rb')
 
 ##############################################
 # カレンダ(url)に登録されている start_date から end_date までの予定を取得する．

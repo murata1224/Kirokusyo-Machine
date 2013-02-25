@@ -1,9 +1,9 @@
 #!/usr/bin/ruby
 
 require 'yaml'
-require './get_schedules.rb'
+require File.expand_path(File.dirname(__FILE__) + '/get_schedules.rb')
 
-data = YAML.load_file('setting.yml')
+data = YAML.load_file(File.dirname(__FILE__) + '/setting.yml')
 range_start = "20130208"
 range_end = "20130301"
 
