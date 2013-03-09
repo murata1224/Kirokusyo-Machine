@@ -1,0 +1,29 @@
+* 記録書マシーン について
+記録書マシーンは，swlabにおける記録書の作成を支援するマシーンです．
+あくまで支援するだけです．
+記録書マシーンを使ったことによって先生に怒られても，自己責任でお願いします．
+* 動作環境
+| Ruby | 1.9.3 |
+Rubyの他に，yamlライブラリが必要です．
+
+* ディレクトリ構成
+記録書マシーンは，以下のディレクトリ構成を想定しています．
+
+
+└─record (記録書ディレクトリ)
+   ├─record15.org 
+   ├─record15.pdf (記録書 No.15)
+   ├─record16.org
+   ├─record16.pdf (記録書 No.16)
+   └─kirokusyo (記録書マシーン)
+      ├─kirokusyomachine.rb
+      ├─get_schedule.rb
+      ├─caldav.rb
+      └─make_up_kirokusyo.rb
+* 使い方
+記録書ディレクトリに移動します．
+以下のコマンドを実行します．
+$ ruby kirokusyo/kirokusyo-machine.rb
+以下のように出力ファイルを指定すると，記録書がorg-modeのファイルで出力されます．
+$ ruby kirokusyo/kirokusyo-machine.rb > record17.org
+

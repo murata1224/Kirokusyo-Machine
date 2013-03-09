@@ -14,7 +14,7 @@ require File.expand_path(File.dirname(__FILE__) + '/caldav.rb')
 # :date_end    予定の終了日をstringで返す．例："05/21"
 # :summary     予定のタイトルをstringで返す．例："乃村研ミーティング"
 ##############################################
-def get_schedules (url, user, pass, start_date = nil, end_date = nil)
+def get_schedule (url, user, pass, start_date = nil, end_date = nil)
   initialize_caldav_connection(url, user, pass)
   
   # Googleカレンダーは，time-rangeが使えないのかも．
