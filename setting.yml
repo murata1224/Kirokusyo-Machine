@@ -1,4 +1,19 @@
-calendar:
+research_calendar:
+  url: https://calendar.sample.url
+  user: sample_username
+  pass: sample_password
+
+laboratory_calendar:
+  url: https://calendar.sample.url
+  user: sample_username
+  pass: sample_password
+
+university_calendar:
+  url: https://calendar.sample.url
+  user: sample_username
+  pass: sample_password
+
+job_calendar:
   url: https://calendar.sample.url
   user: sample_username
   pass: sample_password
