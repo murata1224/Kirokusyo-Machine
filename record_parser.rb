@@ -4,7 +4,8 @@ class RecordParser
   # 1.実績　の 研究関連を前回の記録書からコピーする．
   # 他の項目はカレンダ情報から作成する．
   # 複数の出力形式に対応するため，各実績を配列で管理する．
-  # 今はまだ作れていないため，サンプルデータを返す．
+
+  # 記録書Noを抽出
   def get_record_number(record)
     number = 0
     record.readlines.each do |line|
@@ -18,6 +19,7 @@ class RecordParser
     return number
   end
 
+  # 研究実績を抽出
   def get_research_achievements(record)
     research_achievements = []
     plag = 0
@@ -43,6 +45,7 @@ class RecordParser
     return research_achievements
   end
 
+  # 研究予定を抽出
   def get_research_plans(record)
     research_plans = []
     plag = 0

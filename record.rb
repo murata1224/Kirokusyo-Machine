@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 記録書クラス
 class Record
   def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans)
     @user_name = user_name
@@ -32,6 +33,7 @@ class Record
   end
 end
 
+# Org-mode形式の記録書クラス
 class RecordOrg < Record
 
   def output_header
@@ -65,8 +67,6 @@ class RecordOrg < Record
 
   # 研究関連
   def output_achievements_research(research_achievements)
-    # 前回の記録書からコピーした部分
-    
     print "** 研究関連\n"
     print_achievements_copied(research_achievements)
   end
