@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 class Record
-  def output_record(record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans)
+  def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans)
+    @user_name = user_name
+    @user_laboratory = user_laboratory
+    @user_grade = user_grade
     @record_number = record_number
     output_header
     output_coaching
@@ -35,7 +38,7 @@ class RecordOrg < Record
     header = ""
     header << "#+TITLE:     記録書　No.#{@record_number.to_i + 1}\n"
     header << "#+LATEX_HEADER: \\subtitle{(2013年mm月dd日$\\sim$2013年mm月dd日)}\n"
-    header << "#+AUTHOR:    乃村研M1\\\\yoshii\n"
+    header << "#+AUTHOR:    #{@user_laboratory}#{@user_grade}\\\\#{user_name}\n"
     header << "#+DATE:      2013年mm月dd日\n"
     header << "#+SETUPFILE: options/default.org\n"
     print header

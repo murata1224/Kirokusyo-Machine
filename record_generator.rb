@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*
+require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/calendar.rb')
 require File.expand_path(File.dirname(__FILE__) + '/record.rb')
 require File.expand_path(File.dirname(__FILE__) + '/record_parser.rb')
@@ -9,6 +10,9 @@ class RecordGenerator
   def initialize
     @record = nil
     @record_number = nil
+    @user_name = nil
+    @user_laboratory = nil
+    @user_grade = nil
     @research_achevements = nil
     @laboratory_achievements = nil
     @university_achievements = nil
@@ -20,7 +24,7 @@ class RecordGenerator
   end
 
   def output_record
-    @record.output_record(@record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans)
+    @record.output_record(@user_name, @user_laboratory, @user_grade, @record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans)
   end
 
   def generate_record(old_record, period1, period2)
@@ -29,10 +33,18 @@ class RecordGenerator
     get_achievemnts(start_date1, end_date1)
     get_plans(start_date2, end_date2)
     parse_record(old_record)
+    get_user_info
     @record = RecordOrg.new
   end
 
   private
+
+  def get_user_info
+    data = YAML.load_file(File.dirname(__FILE__) + '/user_info.yml')
+    @user_name = data["user_info"]["name"]
+    @user_laboratory = data["user_info"]["laboratory"]
+    @user_grade = data["user_info"]["grade"]
+  end
 
   def parse_record(record)
     @record_number = get_record_number(record)
