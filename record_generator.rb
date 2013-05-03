@@ -1,4 +1,4 @@
-# -*- coding: undecided -*
+# -*- coding: utf-8 -*-
 require 'yaml'
 require File.expand_path(File.dirname(__FILE__) + '/calendar.rb')
 require File.expand_path(File.dirname(__FILE__) + '/record.rb')

@@ -40,7 +40,7 @@ class RecordOrg < Record
     header = ""
     header << "#+TITLE:     記録書　No.#{@record_number.to_i + 1}\n"
     header << "#+LATEX_HEADER: \\subtitle{(2013年mm月dd日$\\sim$2013年mm月dd日)}\n"
-    header << "#+AUTHOR:    #{@user_laboratory}#{@user_grade}\\\\#{user_name}\n"
+    header << "#+AUTHOR:    #{@user_laboratory}#{@user_grade}\\\\#{@user_name}\n"
     header << "#+DATE:      2013年mm月dd日\n"
     header << "#+SETUPFILE: options/default.org\n"
     print header
@@ -74,19 +74,19 @@ class RecordOrg < Record
   # 研究室関連
   def output_achievements_laboratory(schedules)
     print "** 研究室関連\n"
-    print_schedules(schedules)
+    print_schedules(schedules, "laboratory")
   end
   
   # 大学・大学院関連
   def output_achievements_university(schedules)
     print "** 大学・大学院関連\n"
-    print_schedules(schedules)
+    print_schedules(schedules, "university")
   end
   
   # 就職活動関連
   def output_achievements_job(schedules)
     print "** 就職活動関連\n"
-    print_schedules(schedules)
+    print_schedules(schedules, "job")
   end
     
   # 詳細および反省・感想
@@ -165,15 +165,16 @@ class RecordOrg < Record
   #################################
   private
   
-  def print_schedules(schedules)
+  def print_schedules(schedules, type=nil)
     number = 1
     schedules.each do |s|
       if s["date_start"] == s["date_end"]
         print "   " + "#{number}. " + s["summary"] + "\n"
         print "      " + "#+latex: \\hfill" + "\n"
+        print "      " + "#+latex: \\label\{enum-#{type}#{number}\}" + "\n"
         print "      " + "(" + s["date_start"] + ")\n"
+        number += 1
       end
-      number += 1
     end
   end  
 
