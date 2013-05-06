@@ -15,15 +15,75 @@ Rubyの他に，yamlライブラリが必要です．
    ├─record15.pdf (記録書 No.15)
    ├─record16.org
    ├─record16.pdf (記録書 No.16)
-   └─kirokusyo (記録書マシーン)
-      ├─kirokusyomachine.rb
-      ├─get_schedule.rb
-      ├─caldav.rb
-      └─make_up_kirokusyo.rb
+   ├─reportForm.sty
+   └─options
+      └─default.org
+└─kirokusyo (記録書マシーン)
+    ├─kirokusyomachine.rb
+    ├─get_schedule.rb
+    ├─caldav.rb
+    ├─calendar.rb
+    ├─record.rb
+    ├─record_generator.rb
+    ├─record_parser.rb
+    ├─make_up_kirokusyo.rb
+    └─org (sample)
+       ├─reportForm.sty
+       ├─sample.org
+       ├─test.org
+       └─options
+          └─default.org
+* 準備
+** setting.ymlの設定
+以下の3つのカレンダのurl，user，passを設定する．
++ 研究室関連カレンダー(laboratory_calendar)
++ 大学関連カレンダー(university_calendar)
++ 就職活動関連カレンダー(job_calendar)
+** user_info.ymlの設定
+以下の3つの情報を設定する．
++ 名前(name)
++ 研究室(laboratory)
++ 学年(grade)
+** emacsの設定
+.emacs.d/init.elに以下の行を追加する．
+#+begin_src emacs-lisp
+(defun org-mode-hook()
+ (when (require 'org-latex nil t)
+    (setq org-latex-to-pdf-process '("sh ~/Program/script/shell_script/typeset4org.sh %f")) 
+    (add-to-list 'org-export-latex-classes
+		 '("reportForm" 
+		   "\\documentclass[fleqn, 12pt]{extarticle}
+                    \\usepackage{reportForm}"
+		   ("\\section{%s}" . "\\section*{%s}")
+		   ("\\subsection{%s}" . "\\subsection*{%s}")
+		   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		   ))
+))
+
+(add-hook 'org-mode-hook 'org-mode-hook)
+#+end_src
+** サンプルファイルの設定
+orgディレクトリ以下を記録書ディレクトリ(各自が記録書を管理しているディレクトリ)にコピーする．
+test.org，sample.orgを参考にして，orgファイルを作成する．
 * 使い方
+** 記録書の生成(org)
 記録書ディレクトリに移動します．
 以下のコマンドを実行します．
-$ ruby kirokusyo/kirokusyo-machine.rb
-以下のように出力ファイルを指定すると，記録書がorg-modeのファイルで出力されます．
-$ ruby kirokusyo/kirokusyo-machine.rb > record17.org
+#+begin_src bash
+$ ruby kirokusyo-machine.rb oldrecord_file period1 period2
+$ ruby kirokusyo-machine.rb test.org 20130401/20130415 20130415/20130430
+#+end_src
 
+以下のように出力ファイルを指定すると，記録書がorg-modeのファイルで出力されます．
+#+begin_src bash
+$ ruby kirokusyo-machine.rb test.org 20130401/20130415 20130415/20130430 > test2.org 
+#+end_src
+** 記録書の変換(org->pdf)
+作成したorgファイルをemacsで開く．
+#+begin_src bash
+$ emacs test2.org
+#+end_src
+emacs 上で以下のコマンドを入力する．
+#+begin_src emacs
+C-c C-e d
+#+end_src
