@@ -22,11 +22,12 @@ class RecordGenerator
     @laboratory_plans = nil
     @university_plans = nil
     @job_plans = nil
+    @conference_info = nil
   end
 
   # 記録書を出力
   def output_record
-    @record.output_record(@user_name, @user_laboratory, @user_grade, @record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans)
+    @record.output_record(@user_name, @user_laboratory, @user_grade, @record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans, @conference_info)
   end
 
   # 記録書を生成
@@ -55,6 +56,7 @@ class RecordGenerator
     @record_number = get_record_number(record)
     @research_achievements = get_research_achievements(record)
     @research_plans = get_research_plans(record)
+    @conference_info = get_conference_info(record)
   end
 
   # 前回の記録書から，記録書No を抽出
@@ -73,6 +75,12 @@ class RecordGenerator
   def get_research_plans(record)
     record_parser = RecordParser.new
     record_parser.get_research_plans(record)
+  end
+
+  # 前回記録書から，学会情報を抽出
+  def get_conference_info(record)
+    record_parser = RecordParser.new
+    record_parser.get_conference_info(record)
   end
 
   # カレンダから，研究室実績，大学関連実績，就職活動関連実績を取得

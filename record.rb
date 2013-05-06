@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # 記録書クラス
 class Record
-  def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans)
+  def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans, conference_info)
     @user_name = user_name
     @user_laboratory = user_laboratory
     @user_grade = user_grade
@@ -11,6 +11,7 @@ class Record
     output_achievements(research_achievements, laboratory_achievements, university_achievements, job_achievements)
     output_descriptions
     output_plans(research_plans, laboratory_plans, university_plans, job_plans)
+    output_conference_info(conference_info)
     output_other
   end
 
@@ -27,6 +28,9 @@ class Record
   end
   
   def output_plans(research_achievements, laboratory_plans, university_plans, job_plans)
+  end
+
+  def output_conference_info(conference_info)
   end
   
   def output_other
@@ -156,6 +160,12 @@ class RecordOrg < Record
     print_schedules(schedules)
   end
 
+  # 学会情報
+  def output_conference_info(conference_info)
+    print "* 学会情報\n"
+    print_conference_info(conference_info)
+  end
+
   # その他
   def output_other
     print "* その他\n"
@@ -178,11 +188,17 @@ class RecordOrg < Record
     end
   end  
 
+  def print_conference_info(conference_info)
+    conference_info.each do |info|
+      print info
+    end
+  end
+
   def print_descriptions
     descriptions = ""
     descriptions << "  " +  "#+begin_latex\n"
     descriptions << "  " +  "\\begin{itemize}\n"
-    descriptions << "  " +  "\\item[(\\ref{enum:research1})]\n"
+    descriptions << "  " +  "\\item[(\\ref{enum-research1})]\n"
     descriptions << "  " +  "\\verb|\\item[]| の中に実績の章で貼ったラベルを参照する．\n"
     descriptions << "  " +  "こうすることで，実績の箇条書きを並べ替えても，詳細および反省・感想のほうに自動で反映される\n"
     descriptions << "  " +  "ここの記述は\\verb|#+begin_latex| ，\\verb|#+end_latex| で囲み，\\LaTeX の記法で記述している．\n"

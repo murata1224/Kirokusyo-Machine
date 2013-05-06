@@ -70,4 +70,27 @@ class RecordParser
     record.rewind
     return research_plans
   end
+
+  # 学会情報を抽出
+  def get_conference_info(record)
+    conference_info = []
+    plag = 0
+    record.readlines.each do |line|
+      if line =~ /\* 学会情報/
+        plag = 1
+        next
+      end
+      if line =~ /\* その他/ && plag == 1
+        plag = 0
+        break
+      end
+      if plag == 1
+        conference_info << line
+      end
+    end
+
+    record.rewind
+    return conference_info
+  end
+
 end
