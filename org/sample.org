@@ -1,0 +1,187 @@
+#+TITLE:     記録書　No.47
+#+LATEX_HEADER: \subtitle{(2013年mm月dd日$\sim$2013年mm月dd日)}
+#+AUTHOR:    乃村研究室M2\\吉井英人
+#+DATE:      2013年mm月dd日
+#+SETUPFILE: options/default.org
+* 前回ミーティングからの指導・指摘事項
+  1. 特になし
+#   example
+#   名前の途中で改行してはいけない．
+#   #+latex: \newline
+#   #+latex: \hfill
+#   [2/26, 全体ミーティング，谷口先生]
+
+* 実績
+** 研究関連
+   1. 研究関連
+      #+latex: \hfill
+      #+latex: \label{enum-research1}
+      1. 作業履歴の表示方法の改良
+        #+latex: \hfill
+        #+latex: \label{enum-research1-A}
+        (10%, +0%)
+      2. UIの改良
+        #+latex: \hfill
+        #+latex: \label{enum-research1-B}
+        (0%, +0%)
+      3. Missionの視覚化の検討
+        #+latex: \hfill
+        #+latex: \label{enum-research1-C}
+        (60%, -30%, +10%)
+      4. 予測結果の提示方法の検討
+        #+latex: \hfill
+        #+latex: \label{enum-research1-D}
+        (60%, -30%, +10%)
+      5. 評価項目の制定
+        #+latex: \hfill
+        #+latex: \label{enum-research1-E}
+        (20%,+0%)
+      6. Googleカレンダとの同期機能の実行
+        #+latex: \hfill
+        #+latex: \label{enum-research1-F}
+        (20%,+0%)
+      7. Occurrenceモデルの導入について
+        #+latex: \hfill
+        #+latex: \label{enum-research1-G}
+        (50%,+0%)
+
+   2. LastNoteの開発
+      #+latex: \hfill
+      #+latex: \label{enum-research2}
+      1. 資料やメールの閲覧回数を数える機能の実装 
+        #+latex: \hfill
+        #+LaTeX: \label{enum-research2-A}
+        (30%, +0%)
+      2. 意見・要望メール送信後のボタンの挙動変更
+        #+latex: \hfill
+        #+LaTeX: \label{enum-research2-B}
+        (70%, +0%)
+      3. calendar\_devをmasterにマージ
+        #+latex: \hfill
+        #+LaTeX: \label{enum-research2-C}
+        (50%, +0%)
+      4. 文献の必須項目の変更
+        #+latex: \hfill
+        #+LaTeX: \label{enum-research2-D}
+        (100%, +100%)
+   3. デスクトップブックマークの開発
+      #+latex: \hfill
+      #+latex: \label{enum-research3}
+      1. RTMからToDoをインポートする機能の作成
+        #+latex: \hfill
+        #+LaTeX: \label{enum-research3-A}
+        (0%, +0%)
+
+** 研究室関連
+   1. 乃村研花見
+      #+latex: \hfill
+      #+latex: \label{enum-laboratory1}
+      (04/05)
+   2. 乃村研ミーティング
+      #+latex: \hfill
+      #+latex: \label{enum-laboratory2}      
+      (04/05)
+   3. 第124回GN検討打合せ
+      #+latex: \hfill
+      #+latex: \label{enum-laboratory3}
+      (04/05)
+   4. 第69回GN開発打合せ
+      #+latex: \hfill
+      #+latex: \label{enum-laboratory4}
+      (04/11)
+** 大学・大学院関連
+** 就職活動関連
+   1. パナソニックIS 二次選考
+      #+latex: \hfill
+      #+latex: \label{enum-job1}
+      (04/12)
+* 詳細および反省・感想
+** 研究関連
+  #+begin_latex
+  \begin{itemize}
+  \item[(\ref{enum-research2-D})]
+  LastNoteの文献登録時の必須項目を変更した．
+  また，文献登録時のチェックを修正した．
+  修正前は，必須項目を入力しなくても登録することができた．
+  今回の修正により，必須項目を入力せずに文献を登録しようとした場合，エラーメッセージが表示され，文献が登録できないようになる．
+  この修正は，次回LastNoteのリリースに含まれる予定である．
+  の中に実績の章で貼ったラベルを参照する．
+  \end{itemize}
+  #+end_latex
+** 研究室関連
+  #+begin_latex
+  \begin{itemize}
+  \item[(\ref{enum-laboratory3})]
+  運動公園にて，乃村研花見を行った．開催場所は，例年通りスタジアムの裏であった．天候や桜の開花状況が心配であった．しかし，当日は天候が良く，桜も満開で絶好の花見日和であった．
+  \item[(\ref{enum-laboratory4})]
+  LastNoteをRails3.2.9に対応させるための準備を進めている．開発打合せにおいて，対応のために必要な作業がほぼ完了したことを確認した．残っている作業を早めに終わらせ，次回LastNoteのリリースに，Rails3.2.9対応を含める予定である．
+  \end{itemize}
+  #+end_latex
+# ** 大学・大学院関連
+#   #+begin_latex
+#   \begin{itemize}
+#   \item[(\ref{enum:research1})]
+#   \verb|\item[]| の中に実績の章で貼ったラベルを参照する．
+#   こうすることで，実績の箇条書きを並べ替えても，詳細および反省・感想のほうに自動で反映される
+#   ここの記述は\verb|#+begin_latex| ，\verb|#+end_latex| で囲み，\LaTeX の記法で記述している．
+#   \end{itemize}
+#   #+end_latex
+# ** 就職活動関連
+#   #+begin_latex
+#   \begin{itemize}
+#   \item[(\ref{enum:research1})]
+#   \verb|\item[]| の中に実績の章で貼ったラベルを参照する．
+#   こうすることで，実績の箇条書きを並べ替えても，詳細および反省・感想のほうに自動で反映される
+#   ここの記述は\verb|#+begin_latex| ，\verb|#+end_latex| で囲み，\LaTeX の記法で記述している．
+#   \end{itemize}
+#   #+end_latex
+* 今後の予定
+** 研究関連
+  #+begin_latex
+  \begin{itemize}
+  \item[(\ref{enum-research1})] 研究関連
+    \begin{itemize}
+    \item[(\ref{enum-research1-C})] Missionの視覚化     
+    (5/10)
+    \item[(\ref{enum-research1-G})] Occurrenceモデルの導入について     
+    (4/25)
+    \end{itemize}
+  \item[(\ref{enum-research2})] LastNoteの開発
+    \begin{itemize}
+    \item[(\ref{enum-research2-B})] 意見・要望メール送信後のボタンの挙動変更     
+    (4/25)
+    \end{itemize}
+  \end{itemize}
+  #+end_latex
+** 研究室関連
+   1. Rails勉強会
+      #+latex: \hfill
+      #+latex: label{enum-1}      (04/15)
+   2. 全体ミーティング
+      #+latex: \hfill
+      #+latex: label{enum-2}      (04/15)
+   3. 第125回GN検討打合せ
+      #+latex: \hfill
+      #+latex: label{enum-3}      (04/19)
+   4. OS研究会 発表練習
+      #+latex: \hfill
+      #+latex: label{enum-4}      (04/22)
+   5. MUE発表練習
+      #+latex: \hfill
+      #+latex: label{enum-5}      (05/01)
+   6. 第21回乃村杯
+      #+latex: \hfill
+      #+latex: label{enum-6}      (05/02)
+   7. 第21回乃村杯打ち上げ
+      #+latex: \hfill
+      #+latex: label{enum-7}      (05/02)
+** 大学・大学院関連
+   1. 健康診断
+      #+latex: \hfill
+      #+latex: label{enum-1}      (04/18)
+** 就職活動関連
+   1. パナソニックIS最終選考
+      #+latex: \hfill
+      #+latex: label{enum-1}      (04/19)
+* その他
+その他書きたいことを書く．

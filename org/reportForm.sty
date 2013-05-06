@@ -1,0 +1,92 @@
+%セクションのフォントサイズを普通に変更
+% \Large\bf を \normalsize\bf に変更
+\makeatletter
+\def\section{\@startsection {section}{1}{\z@}
+  {1.0ex plus -1ex minus -.2ex}
+  {1.0ex plus .2ex}
+  {\normalsize}
+}
+\makeatother
+
+%サブセクションのフォントサイズを普通に変更
+\makeatletter
+\def\subsection{\@startsection {subsection}{1}{\z@}
+  {0.5ex plus -1ex minus -.2ex}
+  {0.5ex plus .2ex}
+  {\normalsize}
+}
+\makeatother
+
+\makeatletter
+
+\makeatother
+%セクション番号の形式の設定(セクションだけ後ろにドットを追加)
+\makeatletter
+\def\@seccntformat#1{% #1: <counter name>
+  \@nameuse{@seccnt@prefix@#1}%
+  \@nameuse{the#1}%
+  \@nameuse{@seccnt@postfix@#1}%
+  \@nameuse{@seccnt@afterskip@#1}}
+\def\@seccnt@prefix@section{}
+\def\@seccnt@postfix@section{.}
+\def\@seccnt@afterskip@section{\quad}
+\def\@seccnt@prefix@subsection{}
+\def\@seccnt@postfix@subsection{}
+\def\@seccnt@afterskip@subsection{\quad}
+\def\@seccnt@prefix@subsubsection{}
+\def\@seccnt@postfix@subsubsection{}
+\def\@seccnt@afterskip@subsubsection{\quad}
+\def\@seccnt@prefix@paragraph{}
+\def\@seccnt@postfix@paragraph{}
+\def\@seccnt@afterskip@paragraph{\quad}
+\def\@seccnt@prefix@subparagraph{}
+\def\@seccnt@postfix@subparagraph{}
+\def\@seccnt@afterskip@subparagraph{\quad}
+\makeatother
+
+%レイアウトの設定(上下左右の余白など) 
+\oddsidemargin=-1cm
+\textwidth=18cm
+\textheight=25cm
+\topmargin=-2cm
+\headheight=1cm
+\headsep=0cm
+\footskip=.5cm
+
+%箇条書きの間隔設定
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+           \partopsep=0pt \parsep=1ex \topsep=2.4ex \itemsep=0pt \relax}
+
+\def\@listii{\leftmargin\leftmarginii \labelwidth\leftmarginii
+             \advance\labelwidth-\labelsep
+             \topsep=0pt \parsep=0pt \itemsep=0pt \relax}
+\let\@listi\@listI \@listi
+\makeatother
+
+\makeatletter
+\def\@maketitle{
+  \begin{center}
+    \let\footnote\thanks
+        {\Large \@title \par}
+        {\@subtitle \par}
+  \end{center} %右詰めのため
+  \begin{flushright}
+  {\@date \par}
+  {\@author \par}
+  \end{flushright}
+         \par}
+
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\let\@subtitle\@empty
+\makeatother
+
+
+%箇条書きの番号の設定(1),(A),(a)
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\theenumii}{\Alph{enumii}}
+\renewcommand{\theenumiii}{\alph{enumiii}}
+\renewcommand{\labelenumi}{(\theenumi)}
+\renewcommand{\labelenumii}{(\theenumii)}
+\renewcommand{\labelenumiii}{(\theenumiii)}
+

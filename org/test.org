@@ -1,0 +1,117 @@
+#+TITLE:     記録書　No.11
+#+LATEX_HEADER: \subtitle{(2013年mm月dd日$\sim$2013年mm月dd日)}
+#+AUTHOR:    乃村研M1\\吉井 英人
+#+DATE:      2013年mm月dd日
+#+SETUPFILE: options/default.org
+
+* 指導・指摘事項 
+  1. いただいた指導・指摘を書く
+     #+latex: \newline
+     #+latex: \hfill
+     [日にち, 場所，指導・指摘をくださった方]
+     
+* 実績
+** 研究関連
+   1. 研究関連1
+      #+latex: \hfill
+      #+latex: \label{enum-research1}
+      (100%, +30%)
+   2. 研究関連2
+      #+latex: \hfill
+      #+laTeX: \label{enum-research2}
+      (100%, +95%)      
+   3. 研究関連3
+      #+latex: \hfill
+      #+laTeX: \label{enum-research2}
+      (80%, +80%)
+
+** 研究室関連
+   1. 研究室関連1
+      #+latex: \hfill
+      (2/13)
+
+** 大学・大学院関連
+   1. 大学関連1
+      #+latex: \hfill
+      #+LaTeX: \label{enum:univ1}
+      (2/7)
+   2. 大学関連2
+      #+latex: \hfill
+      #+LaTeX: \label{enum:univ2}
+      (2/15)
+* 詳細および反省・感想
+** 研究関連
+   #+begin_latex
+   \begin{itemize}
+   \item[(\ref{enum:research1})]
+   \verb|\item[]| の中に実績の章で貼ったラベルを参照する．
+   こうすることで，実績の箇条書きを並べ替えても，詳細および反省・感想のほうに自動で反映される
+   ここの記述は\verb|#+begin_latex| ，\verb|#+end_latex| で囲み，\LaTeX の記法で記述している．
+   \end{itemize}
+   #+end_latex
+
+** 研究室関連
+   特になし
+** 大学関連
+   #+BEGIN_LaTeX
+   \begin{itemize}
+   \item[(\ref{enum:univ1})]
+   大学関連1の詳細
+   \item[(\ref{enum:univ2})]
+   大学関連2の詳細
+   \end{itemize}
+   #+END_LaTeX
+
+* 今後の予定
+** 研究関連
+   1. 研究関連1
+      #+latex: \hfill
+      (保留)
+
+   2. 研究関連2
+      #+latex: \hfill
+      (2月末)
+
+   3. 研究関連3
+      #+latex: \hfill
+      (3月央)
+
+   4. 研究関連4
+      #+latex: \hfill
+      (3月央)
+
+** 研究室関連
+    1. 研究室関連1
+       #+latex: \hfill
+       (2/26)
+    2. 研究室関連2
+       #+latex: \hfill
+       (2/26)
+    3. 研究室関連3
+       #+latex: \hfill
+       (2/26)
+    4. 研究室関連4
+       #+latex: \hfill
+       (3/6)
+    5. 研究室関連5
+       #+latex: \hfill
+       (3/11)
+    6. 研究室関連6
+       #+latex: \hfill
+       (3/11)
+
+** 大学・大学院関連
+   1. 大学関連1
+      #+latex: \hfill
+      (3/25)
+   2. 大学関連2
+      #+latex: \hfill
+      (3/25)
+      
+** 就職活動関連
+   1. 進学関連1
+      #+latex: \hfill
+      (3/8)
+   
+* その他
+  その他，書きたいことを書く．
