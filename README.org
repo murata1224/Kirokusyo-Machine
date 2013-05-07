@@ -44,6 +44,18 @@ Rubyの他に，yamlライブラリが必要です．
 + 名前(name)
 + 研究室(laboratory)
 + 学年(grade)
+** scriptの設定
+以下のスクリプトを適当な場所に作成する．
+この例では，~/Program/script/shell_script/typeset4org.shとした．
+#+begin_src shell_script
+#!/bin/sh
+echo $1
+filename=`echo $1 | sed -e "s/\.tex//"`
+echo "filename is $filename"
+platex $filename
+platex $filename
+dvipdfmx $filename
+#+end_src
 ** emacsの設定
 .emacs.d/init.elに以下の行を追加する．
 #+begin_src emacs-lisp
