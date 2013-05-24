@@ -9,7 +9,7 @@ Rubyの他に，yamlライブラリが必要です．
 * ディレクトリ構成
 記録書マシーンは，以下のディレクトリ構成を想定しています．
 
-
+#+BEGIN_SRC file
 └─mydocuments (打合資料のドラフトなど自分が作成したドキュメント)
     └─Record (記録書ディレクトリ)
         ├─RecordNo1
@@ -41,6 +41,7 @@ Rubyの他に，yamlライブラリが必要です．
        ├─test.org
        └─options
           └─default.org
+#+END_SRC
 * 準備
 ** setting.ymlの設定
 以下の3つのカレンダのurl，user，passを設定する．
