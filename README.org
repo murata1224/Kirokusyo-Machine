@@ -47,6 +47,27 @@ Rubyの他に，yamlライブラリが必要です．
 + 研究室関連カレンダー(laboratory_calendar)
 + 大学関連カレンダー(university_calendar)
 + 就職活動関連カレンダー(job_calendar)
+
+以下にGoogleカレンダーを指定する場合の例を示す．
+
+（例）
+#+BEGIN_SRC yml
+  url: https://www.google.com/calendar/dav/[カレンダID]/events
+  user: ****
+  pass: ****
+#+END_SRC
+
+カレンダIDは以下のように参照する．
+1. Googleカレンダーにアクセスする．以下にリンクを示す．
+  #+BEGIN_SRC url
+   https://www.google.com/calendar
+  #+END_SRC
+2. 画面左のリストから，取得したいカレンダの右にあるボタンをクリックする．
+   さらに，カレンダー設定をクリックする．
+3. 遷移先の「カレンダーのアドレス」の項目にカレンダーIDが記載されている．
+
+
+
 ** user_info.ymlの設定
 以下の3つの情報を設定する．
 + 名前(name)
