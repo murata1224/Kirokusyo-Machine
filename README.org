@@ -1,23 +1,31 @@
 * 記録書マシーン について
-記録書マシーンは，swlabにおける記録書の作成を支援するマシーンです．
-あくまで支援するだけです．
-記録書マシーンを使ったことによって先生に怒られても，自己責任でお願いします．
+記録書マシーンは，swlabにおける記録書の作成を支援するマシーンです．
+あくまで支援するだけです．
+記録書マシーンを使ったことによって先生に怒られても，自己責任でお願いします．
 * 動作環境
 | Ruby | 1.9.3 |
-Rubyの他に，yamlライブラリが必要です．
+Rubyの他に，yamlライブラリが必要です．
 
-* ディレクトリ構成
-記録書マシーンは，以下のディレクトリ構成を想定しています．
+* ディレクトリ構成
+記録書マシーンは，以下のディレクトリ構成を想定しています．
 
-
-└─record (記録書ディレクトリ)
-   ├─record15.org 
-   ├─record15.pdf (記録書 No.15)
-   ├─record16.org
-   ├─record16.pdf (記録書 No.16)
-   ├─reportForm.sty
-   └─options
-      └─default.org
+#+BEGIN_SRC file
+└─mydocuments (打合資料のドラフトなど自分が作成したドキュメント)
+    └─Record (記録書ディレクトリ)
+        ├─RecordNo1
+	｜  ├─record15.org
+        ｜  ├─record15.pdf (記録書 No.15)
+        ｜  ├─reportForm.sty
+	｜  └─options
+        ｜     └─default.org
+	├─RecordNo2
+        ｜  ├─record16.org
+	｜  ├─record16.pdf (記録書 No.16)
+        ｜  ├─reportForm.sty
+	｜  └─options
+        ｜     └─default.org
+        └─options
+           └─default.org
 └─kirokusyo (記録書マシーン)
     ├─kirokusyomachine.rb
     ├─get_schedule.rb
@@ -33,12 +41,33 @@ Rubyの他に，yamlライブラリが必要です．
        ├─test.org
        └─options
           └─default.org
+#+END_SRC
 * 準備
 ** setting.ymlの設定
 以下の3つのカレンダのurl，user，passを設定する．
 + 研究室関連カレンダー(laboratory_calendar)
 + 大学関連カレンダー(university_calendar)
 + 就職活動関連カレンダー(job_calendar)
+
+以下にGoogleカレンダーを指定する場合の例を示す．
+
+（例）
+#+BEGIN_SRC yml
+  url: https://www.google.com/calendar/dav/[カレンダID]/events
+  user: ****
+  pass: ****
+#+END_SRC
+
+カレンダIDは以下のように参照する．
+1. Googleカレンダーにアクセスする．以下にリンクを示す．
+  #+BEGIN_SRC url
+   https://www.google.com/calendar
+  #+END_SRC
+2. 画面左のリストから，取得したいカレンダの右にあるボタンをクリックする．
+   さらに，カレンダー設定をクリックする．
+3. 遷移先の「カレンダーのアドレス」の項目にカレンダーIDが記載されている．
+
+
 ** user_info.ymlの設定
 以下の3つの情報を設定する．
 + 名前(name)
@@ -47,7 +76,7 @@ Rubyの他に，yamlライブラリが必要です．
 ** scriptの設定
 以下のスクリプトを適当な場所に作成する．
 この例では，~/Program/script/shell_script/typeset4org.shとした．
-#+begin_src shell_script
+#+BEGIN_SRC shell_script
 #!/bin/sh
 echo $1
 filename=`echo $1 | sed -e "s/\.tex//"`
@@ -55,10 +84,10 @@ echo "filename is $filename"
 platex $filename
 platex $filename
 dvipdfmx $filename
-#+end_src
+#+END_SRC
 ** emacsの設定
 .emacs.d/init.elに以下の行を追加する．
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (defun org-mode-hook()
  (when (require 'org-latex nil t)
     (setq org-latex-to-pdf-process '("sh ~/Program/script/shell_script/typeset4org.sh %f")) 
@@ -73,29 +102,29 @@ dvipdfmx $filename
 ))
 
 (add-hook 'org-mode-hook 'org-mode-hook)
-#+end_src
+#+END_SRC
 ** サンプルファイルの設定
 orgディレクトリ以下を記録書ディレクトリ(各自が記録書を管理しているディレクトリ)にコピーする．
 test.org，sample.orgを参考にして，orgファイルを作成する．
 * 使い方
 ** 記録書の生成(org)
-記録書ディレクトリに移動します．
-以下のコマンドを実行します．
-#+begin_src bash
+記録書ディレクトリに移動します．
+以下のコマンドを実行します．
+#+BEGIN_SRC bash
 $ ruby kirokusyo-machine.rb oldrecord_file period1 period2
 $ ruby kirokusyo-machine.rb test.org 20130401/20130415 20130415/20130430
-#+end_src
+#+END_SRC
 
-以下のように出力ファイルを指定すると，記録書がorg-modeのファイルで出力されます．
-#+begin_src bash
+以下のように出力ファイルを指定すると，記録書がorg-modeのファイルで出力されます．
+#+BEGIN_SRC bash
 $ ruby kirokusyo-machine.rb test.org 20130401/20130415 20130415/20130430 > test2.org 
-#+end_src
+#+END_SRC
 ** 記録書の変換(org->pdf)
 作成したorgファイルをemacsで開く．
-#+begin_src bash
+#+BEGIN_SRC bash
 $ emacs test2.org
-#+end_src
+#+END_SRC
 emacs 上で以下のコマンドを入力する．
-#+begin_src emacs
+#+BEGIN_SRC emacs
 C-c C-e d
-#+end_src
+#+END_SRC
