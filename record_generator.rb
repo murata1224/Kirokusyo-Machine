@@ -23,19 +23,22 @@ class RecordGenerator
     @university_plans = nil
     @job_plans = nil
     @conference_info = nil
+    @start_date1 = nil
+    @end_date1 = nil
+    @start_date2 = nil
   end
 
   # 記録書を出力
   def output_record
-    @record.output_record(@user_name, @user_laboratory, @user_grade, @record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans, @conference_info)
+    @record.output_record(@user_name, @user_laboratory, @user_grade, @record_number, @research_achievements, @laboratory_achievements, @university_achievements, @job_achievements, @research_plans, @laboratory_plans, @university_plans, @job_plans, @conference_info, @start_date1, @end_date1, @start_date2)
   end
 
   # 記録書を生成
   def generate_record(old_record, period1, period2)
-    start_date1, end_date1 = period1.split('/')
-    start_date2, end_date2 = period2.split('/')
-    get_achievemnts(start_date1, end_date1)
-    get_plans(start_date2, end_date2)
+    @start_date1, @end_date1 = period1.split('/')
+    @start_date2, end_date2 = period2.split('/')
+    get_achievemnts(@start_date1, @end_date1)
+    get_plans(@start_date2, end_date2)
     parse_record(old_record)
     get_user_info
     @record = RecordOrg.new

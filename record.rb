@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
 # 記録書クラス
 class Record
-  def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans, conference_info)
+  def output_record(user_name, user_laboratory, user_grade, record_number, research_achievements, laboratory_achievements, university_achievements, job_achievements, research_plans, laboratory_plans, university_plans, job_plans, conference_info, start_date1, end_date1, start_date2)
     @user_name = user_name
     @user_laboratory = user_laboratory
     @user_grade = user_grade
     @record_number = record_number
+    @start_year = start_date1.slice(0..3)
+    @start_month = start_date1.slice(4..5)
+    @start_day = start_date1.slice(6..7)
+    @end_year = end_date1.slice(0..3)
+    @end_month = end_date1.slice(4..5)
+    @end_day = end_date1.slice(6..7)
+    @report_year = start_date2.slice(0..3)
+    @report_month = start_date2.slice(4..5)
+    @report_day = start_date2.slice(6..7)
     output_header
     output_coaching
     output_achievements(research_achievements, laboratory_achievements, university_achievements, job_achievements)
@@ -43,9 +52,9 @@ class RecordOrg < Record
   def output_header
     header = ""
     header << "#+TITLE:     記録書　No.#{@record_number.to_i + 1}\n"
-    header << "#+LATEX_HEADER: \\subtitle{(2013年mm月dd日$\\sim$2013年mm月dd日)}\n"
+    header << "#+LATEX_HEADER: \\subtitle{(#{@start_year}年#{@start_month}月#{@start_day}日$\\sim$#{@end_year}年#{@end_month}月#{@end_day}日)}\n"
     header << "#+AUTHOR:    #{@user_laboratory}#{@user_grade}\\\\#{@user_name}\n"
-    header << "#+DATE:      2013年mm月dd日\n"
+    header << "#+DATE:      #{@report_year}年#{@report_month}月#{@report_day}日\n"
     header << "#+SETUPFILE: options/default.org\n"
     print header
   end
